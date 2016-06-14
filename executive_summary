@@ -1,0 +1,9 @@
+Executive Summary – “Netflix” IMDB/NLP Project:
+ 
+This dataset, as structured, provided many difficult steps to overcome to accurately predict a movies score. 
+ 
+The main hurdle came from 2 factors. Number one, as we focused solely on the highest ranked movies, the actual prediction of a score using NLP on the top 200 n_grams of the entire dataset’s reviews (even while stemmed) providing very little contrast to “bad” reviews.  The vast majority of the reviews were high scores (with a mean score ~8.45), so the characteristics of a bad did not represent a high enough presence in our training set to make it on to the top 200_ngrams, and thusly affect our model.
+ 
+Number two, guessing a user generated movie score based on NLP is a highly inaccurate science.  The scores (and functionality) of the model would have been improved significantly if we had attempted to classify the reviews (by user generated score) in tranches rather than in highly discrete values. 
+ 
+Unfortunately, these above characteristics made it extremely difficult to accurately predict a user generated score.  Our best model was a meager 45% accurate (using classification metrics).   Moving forward, I would recommend fixing the two significant issues raised with specific steps.  First, we should attempt to predict a reviews movie score in 5 buckets (1-2, 3-4, …9-10) to decrease the specificity of our model.  As it stands now the results are largely useless.  Secondly, it would be very useful to include MUCH lower ranked movies into our initial n_gram analysis/model fit.  This would expose our model to a larger number of poor reviews and could represent an increase in our ability to predict a movie score based on a review. 

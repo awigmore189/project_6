@@ -197,17 +197,17 @@ plt.gcf().set_size_inches(10, 4)
 
 
 # total votes/movies
-
 sns.stripplot(data= movies['num_votes'], jitter=True, alpha=.5)
 
 # wtf lawlz roflcopter annoyance as fuck grumble
+
+pizza = pd.DataFrame(movies.groupby(['genre'])['runtime'].mean())
 labels = pizza['genre']
 data = pizza['runtime']
 sns.barplot(x=labels, y=data)
 plt.gcf().set_size_inches(10, 4)
 
-pizza = pd.DataFrame(movies.groupby(['genre'])['runtime'].mean())
-pizza 
+
 # runtime/genre
 
 # segmenting
@@ -286,6 +286,7 @@ x2_mask = ['10', '2', 'act', 'action', 'actor', 'actual', 'alway', 'amaz',
        'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Drama', 'Film-Noir',
        'Horror', 'Mystery', 'Western', 'user_movie_score']
 
+len(x2_mask)
 # segmenting variables
 y = stemmed_full['user_movie_score']
 X = stemmed_full[x_mask]
@@ -306,7 +307,7 @@ cross_val_score(trees4, X2, y2, cv=5, n_jobs=-1)
 # Decision Tree Classifiying the score
 trees2 = DecisionTreeClassifier()
 trees2.fit(X, y)
-cross_val_score(trees2, X, y, cv=5, n_jobs=-1, )
+cross_val_score(trees2, X, y, cv=5, n_jobs=-1)
 
 # gridsearching the classifier
 grid_classifier = {'max_depth':depth, 'max_features':x}
@@ -370,7 +371,7 @@ do_cross_val(x_trees, X, y)
 # Extra trees (0.43864060302745989, 0.036794626953118421)
 
 # Random Forest paramters & plotting and such
-importance = pd.DataFrame({"Features": x_mask, 'model_importance (multiplied by 1000)':forest.feature_importances_})
+importance = pd.DataFrame({"Features": X.columns.values, 'model_importance (multiplied by 1000)':forest.feature_importances_})
 
 importance['model_importance (multiplied by 1000)'] = importance['model_importance (multiplied by 1000)'].apply(lambda x: x*1000)
 importance = importance.sort_values(by ='model_importance (multiplied by 1000)', ascending=False)
